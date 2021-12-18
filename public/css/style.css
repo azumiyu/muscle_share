@@ -1,0 +1,163 @@
+.posts_btn{
+    position: fixed;
+    right: 10%;
+    top: 57px;
+    display: inline-block;
+    text-decoration: none;
+    background: #87befd;
+    color: #FFF;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.posts_btn:hover{
+    background: #668ad8;
+    text-decoration: none;
+}
+
+.card-title {
+    color: black !important;
+    transition: .5s;
+}
+
+.home-sub-title{
+    transition: .5s;
+}
+
+.home-sub-title:hover{
+    text-decoration: none;
+    background-color: rgba(108, 170, 233, 0.5);
+}
+.home-sub-title:hover .card-title{
+    font-size: 20px;
+}
+
+.home-sub-title:hover .card-img-top{
+    transition-duration: 0.5s;
+    opacity: 0.6;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    transition-duration: 0.5s;
+ }
+ 
+ 
+ /*posts.index.blade.php*/
+ 
+.posts-title {
+    position: relative;
+    padding: 1.5rem 2rem;
+    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
+}
+
+.posts-title:before,
+.posts-title:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    content: '';
+    background-image: -webkit-linear-gradient(315deg, #eaf8dc 0%, #d5f1b8 40%, #bfea95 60%, #f4fced 100%);
+    background-image: linear-gradient(135deg, #eaf8dc 0%, #d5f1b8 40%, #bfea95 60%, #f4fced 100%);
+}
+
+.posts-title:before {
+    top: 0;
+}
+
+.posts-title:after {
+    bottom: 0;
+}
+
+
+.posts-top {
+     font-size: 20px !important;
+ }
+ 
+ .posts_card {
+     padding: 0.5em 1em;
+     margin: 2em 0;
+     border-top: solid 6px #bfea95;
+     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+ }
+
+/*posts:create.blade.php*/
+.common-input {
+    position: relative;
+    margin-top: 50px;
+}
+
+.common-input input[type="number"] {
+    display: inline-block;
+    width: 500px;
+    height: 40px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 10px 10px 10px 100px;
+    transition: all 0.1s ease-out;
+  }
+ 
+ .common-input input[type="number"] + label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px 0 0 3px;
+    padding: 0 20px;
+    background: #d5f1b8;
+    transform: translateZ(0) translateX(0);
+    transition: all 0.3s ease-in;
+    transition-delay: 0.2s;
+  }
+  
+  .common-input input[type="number"]:focus + label{
+    transform: translateY(-90%) translateX(0%);
+    border-radius: 3px;
+    transition: all 0.1s ease-out;
+  }
+  
+  .common-input input[type="number"]:focus{
+    padding: 10px;
+    transition: all 0.3s ease-out;
+    transition-delay: 0.2s;
+  }
+  
+  .common-input textarea {
+    display: inline-block;
+    width: 500px;
+    height: 80px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 10px 10px 10px 100px;
+    transition: all 0.1s ease-out;
+  }
+ 
+ .common-input textarea + label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 3px 0 0 3px;
+    padding: 0 20px;
+    background: #d5f1b8;
+    transform: translateZ(0) translateX(0);
+    transition: all 0.3s ease-in;
+    transition-delay: 0.2s;
+  }
