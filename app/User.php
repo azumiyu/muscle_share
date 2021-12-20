@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');  
     }
     
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Post')->withTimestamps();
+    }
+    
     public function getByUser(int $limit_count = 10)
     {
          return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);

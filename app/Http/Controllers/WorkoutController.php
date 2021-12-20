@@ -11,4 +11,11 @@ class WorkoutController extends Controller
     {
         return view('workouts.index')->with(['posts' => $workout->getByWorkout()]);
     }
+    
+    public function work_store(Request $request, Workout $workout)
+    {
+        $input = $request['workout'];
+        $workout->fill($input)->save();
+        return redirect('/posts/create');
+    }
 }

@@ -6,17 +6,22 @@
             <form action="/posts" method="POST">
               @csrf
               <h2>筋トレ記録投稿</h2>
-              <label for="dino-select">種目を選んでね</label>
-                <select id="dino-select" name="post[workout_id]">
+                <select id="workouts-name" name="post[workout_id]" class="common-select" aria-label="Default select example">
                   @foreach($categories as $category)
+                  @if ((count($category->workouts)) != 0)
                     <optgroup label="{{ $category->name }}">
-                        @foreach($workouts as $workout)
-                          <option value="{{ $workout->id }}">{{ $workout->name }}</option>
-                        @endforeach
+                      @foreach($category->workouts as $workout)
+                      <option selected disabled>種目を選択してね</option>
+                      <option value="{{ $workout->id }}">
+                        {{$workout->name}}
+                      </option>
+                      @endforeach
+                      @endif
                     </optgroup>
                   @endforeach
                 </select>
                 <a href="/posts/add_workout" class="add-btn">種目を追加する</a>
+                <p class="title__error" style="color:red">{{ $errors->first('post.workout_id') }}</p>
                   <div class="weight common-input">
                       <!-- name 属性のところはリクエストの配列のキーの部分にあたる。-->
                       <input id="weight" type="number" name="post[weight]" value="{{ old('post.weight') }}"/>
@@ -41,7 +46,7 @@
                       <label for="comment">コメント</label>
                       <p class="body__error" style="color:red">{{ $errors->first('post.comment') }}</p>
                   </div>
-                  <input type="submit" value="投稿"/>
+                  <input type="submit" value="投稿" class="common-submit">
             </form>
             <div class="footer">
               <a href="/posts">戻る</a>

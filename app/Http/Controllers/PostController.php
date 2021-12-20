@@ -35,10 +35,4 @@ class PostController extends Controller
         return redirect('/posts');
     }
     
-    public function work_store(Request $request, Workout $workout)
-    {
-        $input = $request['workout'];
-        $workout->fill($input)->save();
-        return redirect('/posts/create');
-    }
 }
