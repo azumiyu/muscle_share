@@ -49,4 +49,5 @@
     </div>
   </div>
 </div>
+<a href="/posts/create" class="posts_btn">投稿</a>
 @endsection

@@ -101,6 +101,13 @@
       color: #999999;
       display: inline-block;
   }
+  
+  .posts-delete {
+      position: absolute;
+      top: 18.5%;
+      right: 100px;
+      display: inline-block;
+  }
 
 /*posts:create.blade.php*/
 .common-input {
@@ -277,3 +284,114 @@
     transition: all 0.3s ease-out;
     transition-delay: 0.2s;
   }
+  
+  /*communities.index.blade.php*/
+ .community-btn-wrapper {
+     display: flex;
+ }
+.community-btn a {
+  display: inline-block;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: #2285b1;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid #2285b1;
+  margin-left: 10px
+}
+
+.community-btn a:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
+  transition:.6s;
+}
+  .community-card {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.2);
+  }   
+  
+   .community-card:hover {
+      transition: .6s;
+      box-shadow: 0 4px 30px rgba(0,0,0,.4);
+  }
+  
+   .community-clickable {
+       color: #212529;
+   }
+  
+  .community-clickable:hover {
+      transition: .6s;
+      background-color: rgba(108, 170, 233, 0.2);
+  }
+  
+  .community-card-btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /*communities.showGroup.blade.php*/
+  
+  .community-target {
+ position: relative;
+  margin: 30px;
+  text-align: center;
+}
+
+.community-target:before,
+.community-target:after {
+  position: absolute;
+  z-index: 0;
+  bottom: -10px;
+  display: block;
+  content: '';
+  border: 1em solid #bfea95;
+}
+
+.community-target:before {
+  left: -20px;
+  border-left-width: 15px;
+  border-left-color: transparent;
+}
+
+.community-target:after {
+  right: -20px;
+  border-right-width: 15px;
+  border-right-color: transparent;
+}
+
+.community-target span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 1rem 2rem;
+  color: #000000;
+  background: #bfea95;
+  font-size: 16px;
+}
+
+.community-target span:before,
+.community-target span:after {
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  content: '';
+  border-style: solid;
+  border-color: #55aa00 transparent transparent transparent;
+}
+
+.community-target span:before {
+  left: 0;
+  border-width: 10px 0 0 10px;
+}
+
+.community-target span:after {
+  right: 0;
+  border-width: 10px 10px 0 0;
+}
+  

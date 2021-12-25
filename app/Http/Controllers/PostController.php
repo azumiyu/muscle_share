@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(Post $post, Workout $workout)
+    public function index(Post $post)
     {
         //return view('index')は、viewsのindex.blade.phpを表示する
         //with(['post' => $post]);で、blade.phpでpostsが使えるようになる
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()],['workouts' => $workout->get()]);  
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);  
     }
     
     public function create(Workout $workout, User $user, Category $category)
@@ -33,6 +33,12 @@ class PostController extends Controller
         $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts');
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return back();
     }
     
 }

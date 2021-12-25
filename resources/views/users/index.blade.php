@@ -32,6 +32,15 @@
                       @endif
                       <p>いいね数：{{ $post->users()->count() }}</p>
                     </div>
+                    @if($post->user_id == Auth::id())
+                      <div class="posts-delete">
+                        <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("削除しますか？");'>
+                        </form>
+                      </div>
+                      @endif
                 </div>
             </div>
            @endforeach

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Post;
+use App\Community;
 use Auth;
+use Illuminate\Http\Request;
 
-
-class FavoriteController extends Controller
+class JoinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,9 +34,9 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Post $post)
+    public function store(Community $community)
     {
-        $post->users()->attach(Auth::id());
+        $community->users()->attach(Auth::id());
 
         return back();
     }
@@ -82,9 +81,9 @@ class FavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Community $community)
     {
-        $post->users()->detach(Auth::id());
+        $community->users()->detach(Auth::id());
 
         return back();
     }
