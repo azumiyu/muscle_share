@@ -16,7 +16,6 @@ Route::group(['middleware' => 'auth'], function(){
     //主に筋トレ掲示板のルーティング
     Route::get('/posts', 'PostController@index')->name('posts');
     Route::get('/posts/create', 'PostController@create');
-    Route::get('/posts/add_workout', 'PostController@add_workout');
     Route::post('/posts', 'PostController@store');
     Route::post('/add_workout', 'WorkoutController@work_store');
     Route::get('/workouts/{workout}', 'WorkoutController@index');
@@ -28,14 +27,30 @@ Route::group(['middleware' => 'auth'], function(){
     //主にコミュニティのルーティング
     Route::get('/communities', 'CommunityController@index')->name('communities');
     Route::get('/communities/create', 'CommunityController@create');
-    Route::get('/communities/personal', 'CommunityController@show');
+    Route::get('/communities/personal/{user}', 'CommunityController@show');
     Route::get('/communities/{community}/group', 'CommunityController@showGroup');
+    Route::post('/communities', 'CommunityController@store');
     Route::post('/communities/{community}/join', 'JoinController@store')->name('join');
     Route::post('/communities/{community}/unjoin', 'JoinController@destroy')->name('unjoin');
+    Route::get('/communities/{community}/edit', 'CommunityController@edit');
+    Route::put('/communities/{community}', 'CommunityController@update');
     Route::delete('/communities/{community}', 'CommunityController@delete');
+    
     //主にランキングのルーティング
+    Route::get('/rankings', 'RankingController@index')->name('rankings');
+    Route::get('/rankings/{workout}', 'RankingController@show');
     
     //主に成長記録のルーティング
+    Route::post('/personals', 'PersonalController@store');
+    Route::get('/personals/{user}', 'PersonalController@index');
+    
+    // LINE API
+    // LINE メッセージ受信
+    Route::post('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
+     
+    // LINE メッセージ送信用
+    Route::get('/line/message', 'LineMessengerController@message');
+    
 });
 
 Auth::routes();

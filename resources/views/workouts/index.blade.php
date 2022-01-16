@@ -8,33 +8,32 @@
         <div class="posts">
            @foreach ($posts as $post)
             <div class="card mb-3 posts_card">
-                <div class="card-body">
+                <div class="card-body posts-item">
                     <div class="posts-top">
                       投稿者: <a href="/workouts/{{ $post->user->id }}" class="text-success">{{ $post->user->name }}</a>
                       {{ $post->weight }}@if($post->weight != NULL){{"kg"}}@endif　{{ $post->rep }}回　{{ $post->set }}@if($post->set != NULL){{"セット"}}@endif　{{ $post->created_at->format("Y年m月d日") }}
                     </div>
                     <p class="card-text">コメント：{{ $post->comment }}</p>
-                    <div class="favorite-btn">
                       @if($post->users()->where('user_id', Auth::id())->exists())
-                      <div class="col-md-3">
+                      <div class="favorite-btn">
                         <form action="{{ route('unfavorites', $post) }}" method="POST">
                            @csrf
                            <input type="submit" value="いいね" class="btn btn-success">
+                           <p>いいね数：{{ $post->users()->count() }}</p>
                         </form>
                        </div>
                       @else
-                      <div class="col-md-3 ">
+                      <div class="favorite-btn">
                         <form action="{{ route('favorites', $post) }}" method="POST">
                           @csrf
                           <input type="submit" value="いいね" class="btn btn-secondary">
+                          <p>いいね数：{{ $post->users()->count() }}</p>
                         </form>
                        </div>
                       @endif
-                      <p>いいね数：{{ $post->users()->count() }}</p>
-                    </div>
                     @if($post->user_id == Auth::id())
                       <div class="posts-delete">
-                        <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
+                        <form action="/posts/{{ $post->id }}" id="form_delete" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("削除しますか？");'>

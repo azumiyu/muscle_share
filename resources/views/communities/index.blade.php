@@ -12,7 +12,7 @@
           <a href="/communities/create">新しいコミュニティを作る</a>
         </div>
         <div class="community-btn">
-          <a href="/communities/personal">自分の所属コミュニティ</a>
+          <a href="/communities/personal/{{ Auth::id() }}">自分の所属コミュニティ</a>
         </div>
     </div>
     <div class="row">
@@ -52,7 +52,8 @@
       </div>
     @endforeach
     </div>
-    <div class="paginate">
+    <div class="paginate mt-4">
+        {{ $communities->links() }}
     </div>
 </div>
 @endsection

@@ -15,11 +15,12 @@ class CreatePersonalsTable extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('height', 200);
-            $table->string('weight', 200);
+            $table->float('weight');
+            $table->date('date_key');
             $table->timestamps();
-            $table->dateTime('datetime');
             $table->unsignedInteger('user_id');
+            
+            $table->unique(['date_key']);
         });
     }
 

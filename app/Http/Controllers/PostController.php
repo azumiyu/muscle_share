@@ -23,11 +23,6 @@ class PostController extends Controller
         return view('posts.create')->with(['workouts' => $workout->get(),'users' => $user->get(),'categories' => $category->get()]);
     }
     
-    public function add_workout(Workout $workout, User $user, Category $category)
-    {
-        return view('posts.add_workout')->with(['workouts' => $workout->get(),'users' => $user->get(),'categories' => $category->get()]);
-    }
-    
      public function store(PostRequest $request, Post $post)
     {
         $input = $request['post'];

@@ -95,7 +95,7 @@ return [
     'numeric'              => ':attributeには、数字を指定してください。',
     'present'              => ':attributeが存在していません。',
     'regex'                => ':attributeに正しい形式を指定してください。',
-    'required'             => ':attributeは必ず指定してください。',
+    'required'             => ':attributeが入力されてないよ！',
     'required_if'          => ':otherが:valueの場合、:attributeも指定してください。',
     'required_unless'      => ':otherが:valuesでない場合、:attributeを指定してください。',
     'required_with'        => ':valuesを指定する場合は、:attributeも指定してください。',
@@ -112,7 +112,7 @@ return [
     'starts_with'          => ':attributeには、:valuesのどれかで始まる値を指定してください。',
     'string'               => ':attributeは文字列を指定してください。',
     'timezone'             => ':attributeには、有効なゾーンを指定してください。',
-    'unique'               => ':attributeの値は既に存在しています。',
+    'unique'               => 'その:attributeはもう登録されているよ！',
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
@@ -145,6 +145,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'post.workout_id' =>'筋トレ種目',
+        'post.rep' =>'回数',
+        'workout.name' =>'筋トレ種目',
+        'post.weight' =>'キロ数',
+        ],
 
 ];

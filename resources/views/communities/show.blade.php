@@ -11,8 +11,7 @@
         </div>
     </div>
     <div class="row">
-    @foreach ($communities as $community )
-    @if($community->users()->where('user_id', Auth::id())->exists())
+    @foreach ($community_paginate as $community )
       <div class="col-lg-4">
         <div class="card community-card">
          <a href ="/communities/{{ $community->id }}/group" class="community-clickable">
@@ -21,28 +20,25 @@
             <p class="card-text">{{ $community->target }}</p>
             <p class="card-text">現在のメンバー：@foreach($community->users as $user) {{$user->name}} @endforeach</p>
             <div class="community-card-btn-wrapper">
-                <div class="">
                     <form action="{{ route('unjoin', $community) }}" method="POST">
                         @csrf
-                        <input type="submit" value="コミュニティを抜ける" class="btn btn-secondary" onclick='return confirm("本当にこのコミュニティを抜けますか？");'>
+                        <input type="submit" value="コミュニティを抜ける" class="btn btn-secondary mt-2" onclick='return confirm("本当にこのコミュニティを抜けますか？");'>
                     </form>
-                 </div>
-                 <div class="">
-                    <form action="/communities/{{ $community->id }}" id="form_delete" method="post" style="display:inline">
+                    <form action="/communities/{{ $community->id }}" id="form_delete" method="post" class="mt-1">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="削除する" class="btn btn-danger" onclick='return confirm("一度削除すると元に戻せません。メンバーとよく話し合ってから決めてください。本当に削除しますか？");'>
+                        <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("一度削除すると元に戻せません。メンバーとよく話し合ってから決めてください。本当に削除しますか？");'>
+                        <a class="btn btn-primary ml-1" href="/communities/{{ $community->id }}/edit">編集</a>
                     </form>
-                </div>
             </div>
           </div>
          </a>
         </div>
       </div>
-      @endif
     @endforeach
     </div>
     <div class="paginate">
+      {{ $community_paginate->links() }}
     </div>
 </div>
 @endsection

@@ -15,9 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('weight')->nullable();
-            $table->string('rep');
-            $table->string('set')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('rep');
+            $table->integer('set')->nullable();
             $table->string('comment', 200)->nullable();
             $table->timestamps();
             $table->softDeletes();

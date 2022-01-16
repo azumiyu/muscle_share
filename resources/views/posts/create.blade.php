@@ -11,7 +11,7 @@
                   @if ((count($category->workouts)) != 0)
                     <optgroup label="{{ $category->name }}">
                       @foreach($category->workouts as $workout)
-                      <option selected disabled>種目を選択してね</option>
+                      <option selected disabled >種目を選択してね</option>
                       <option value="{{ $workout->id }}">
                         {{$workout->name}}
                       </option>
@@ -20,17 +20,18 @@
                     </optgroup>
                   @endforeach
                 </select>
-                <a href="/posts/add_workout" class="add-btn">種目を追加する</a>
+              	    <a class="js-modal-open common-submit">種目を追加する</a>
+              	<p class="title__error" style="color:red">{{ $errors->first('workout.name') }}</p>
                 <p class="title__error" style="color:red">{{ $errors->first('post.workout_id') }}</p>
                   <div class="weight common-input">
                       <!-- name 属性のところはリクエストの配列のキーの部分にあたる。-->
-                      <input id="weight" type="number" name="post[weight]" value="{{ old('post.weight') }}"/>
+                      <input id="weight" type="number" name="post[weight]" value="{{ old('post.weight') }}" placeholder="(3桁以内)"/>
                       <label for="weight">キロ数</label>
                       <p class="title__error" style="color:red">{{ $errors->first('post.weight') }}</p>
                   </div>
                   <div class="rep common-input">
                       <input id="rep" type="number" name="post[rep]" value="{{ old('post.rep') }}"/>
-                      <label for="rep">回数</label>
+                      <label for="rep" class="required">回数</label>
                       <p class="body__error" style="color:red">{{ $errors->first('post.rep') }}</p>
                   </div>
                   <div class="set common-input">
@@ -48,8 +49,27 @@
                   </div>
                   <input type="submit" value="投稿" class="common-submit">
             </form>
+            <div class="modal js-modal">
+            	    <div class="modal__bg js-modal-close"></div>
+            	    <div class="modal__content">
+            	        <form action="/add_workout" method="POST">
+            	        	@csrf
+            	        	<p>追加したい種目を入力してください。</p>
+            	        	<select id="category" name="workout[category_id]" class="common-select category-select">
+                          @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option selected disabled>部位を選択</option>
+                          @endforeach
+                        </select>
+                        <label for="add-workout">種目追加</label>
+                        <input id="add-workout" type="text" name="workout[name]">
+            	        	<input type = "submit" value = "入力">
+            	        <div><a class="js-modal-close common-submit" href="">閉じる</a></div>
+            	    </div><!--modal__inner-->
+                </div><!--modal-->
             <div class="footer">
-              <a href="/posts">戻る</a>
+            <a href="javascript:history.back()" class="btn btn-primary mt-3">戻る</a>
             </div>
+            
           </div>
 @endsection

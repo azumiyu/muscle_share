@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+  @if (Session::has('flash_message'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('flash_message') }}
+    </div>
+  @endif
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
       <a href="/posts">
@@ -37,7 +42,7 @@
       </a>
     </div>
     <div class="col">
-      <a href="/personals">
+      <a href="/personals/{{ Auth::id() }}">
         <div class="card home-sub-title">
           <img src="{{ asset('img/personal.jpg') }}" class="card-img-top" alt="...">
           <div class="card-body">

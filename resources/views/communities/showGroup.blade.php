@@ -8,38 +8,35 @@
           <a href="/communities/create">新しいコミュニティを作る</a>
         </div>
         <div class="community-btn">
-          <a href="/communities/personal">自分の所属コミュニティ</a>
+          <a href="/communities/personal/{{Auth::id()}}">自分の所属コミュニティ</a>
         </div>
     </div>
      @foreach ($posts as $post)
-     @foreach ($community->users as $user)
-     @if($post->user_id === $user->id)
         <div class="card mb-3 posts_card">
-            <div class="card-body">
-                <div class="posts-top posts-item">
+            <div class="card-body posts-item">
+                <div class="posts-top">
                     種目: <a href="/workouts/{{ $post->workout->id }}" class="text-success">{{ $post->workout->name }}</a>
                     投稿者: <a href="/users/{{ $post->user->id}}" class="text-success">{{ $post->user->name }}</a>
                     </div>
                     <p class="card-text">{{ $post->weight }}@if($post->weight != NULL){{"kg"}}@endif　{{ $post->rep }}回　{{ $post->set }}@if($post->set != NULL){{"セット"}} @endif{{ $post->created_at->format('Y年m月d日') }}</p><hr>
                     <p class="card-text">コメント：{{ $post->comment }}</p>
-                    <div class="favorite-btn">
                       @if($post->users()->where('user_id', Auth::id())->exists())
-                      <div class="col-md-3">
+                      <div class="favorite-btn">
                         <form action="{{ route('unfavorites', $post) }}" method="POST">
                            @csrf
                            <input type="submit" value="いいね" class="btn btn-success">
+                           <p>いいね数：{{ $post->users()->count() }}</p>
                         </form>
                        </div>
                       @else
-                      <div class="col-md-3 ">
+                      <div class="favorite-btn">
                         <form action="{{ route('favorites', $post) }}" method="POST">
                           @csrf
                           <input type="submit" value="いいね" class="btn btn-secondary">
+                          <p>いいね数：{{ $post->users()->count() }}</p>
                         </form>
-                       </div>
+                      </div>
                       @endif
-                      <p>いいね数：{{ $post->users()->count() }}</p>
-                    </div>
                     @if($post->user_id == Auth::id())
                       <div class="posts-delete">
                         <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
@@ -51,11 +48,10 @@
                       @endif
                   </div>
                 </div>
-                @endif
-              @endforeach
               @endforeach
               <a href="/posts/create" class="posts_btn">投稿</a>
     <div class="paginate">
+        {{ $posts->links() }}
     </div>
 </div>
 @endsection

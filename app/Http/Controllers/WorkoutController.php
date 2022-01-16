@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Http\Requests\WorkoutRequest;
 use App\Workout;
 
 class WorkoutController extends Controller
@@ -12,7 +13,7 @@ class WorkoutController extends Controller
         return view('workouts.index')->with(['posts' => $workout->getByWorkout()]);
     }
     
-    public function work_store(Request $request, Workout $workout)
+    public function work_store(WorkoutRequest $request, Workout $workout)
     {
         $input = $request['workout'];
         $workout->fill($input)->save();

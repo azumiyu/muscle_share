@@ -13,6 +13,7 @@
     text-align: center;
     overflow: hidden;
     transition: .4s;
+    z-index: 1;
 }
 
 .posts_btn:hover{
@@ -47,6 +48,17 @@
     height: 15vw;
     object-fit: cover;
     transition-duration: 0.5s;
+ }
+ 
+ .navbar {
+   background-color: #CCFFFF;
+   z-index: 10;
+   position: fixed;
+   width: 100%;
+   opacity: 0.9;
+   margin-bottom: 30px;
+   left: 0;
+   top: 0;
  }
  
  
@@ -96,7 +108,7 @@
   
   .favorite-btn {
       position: absolute;
-      top: 10%;
+      top: 18.5px;
       right: 10px;
       color: #999999;
       display: inline-block;
@@ -104,7 +116,7 @@
   
   .posts-delete {
       position: absolute;
-      top: 18.5%;
+      top: 18.5px;
       right: 100px;
       display: inline-block;
   }
@@ -328,11 +340,6 @@
       background-color: rgba(108, 170, 233, 0.2);
   }
   
-  .community-card-btn-wrapper {
-    display: flex;
-    justify-content: space-around;
-  }
-  
   /*communities.showGroup.blade.php*/
   
   .community-target {
@@ -395,3 +402,94 @@
   border-width: 10px 10px 0 0;
 }
   
+/*rankings.index.blade.php*/
+
+.ranking-category-wrapper {
+  display: flex;
+}
+
+/* rankings.show.blade.php*/
+
+.table_box {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 600px;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+table th:first-child{
+  border-radius: 6px 0 0 0;
+}
+
+table th:last-child{
+  border-radius: 0 6px 0 0;
+  border-left: 0.6px solid #ffffff;
+}
+
+table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#bfea95,#006636);
+  border-left: 0.3px solid #ffffff;
+  width: 20%;
+  padding: 10px 0;
+}
+
+table td{
+  text-align: center;
+  border-left: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  border-top:none;
+  box-shadow: 0px -3px 8px 1px #eee inset;
+  width: 20%;
+  padding: 12px 0;
+  background-color: white;
+}
+
+table td:last-child{
+  border-right: 1px solid #c3c3c3;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+/*personal.blade.php*/
+.modal{
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.modal__bg{
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+.modal__content{
+    background: #fff;
+    left: 50%;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/*その他CSS*/
+
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}

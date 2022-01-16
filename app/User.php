@@ -16,6 +16,17 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');  
     }
     
+    public function personals()   
+    {
+        return $this->hasMany('App\Personal');  
+    }
+    
+    public function personals2($year_month)   
+    {
+        return $this->personals()->with('user')->where('personals.date_key','like',"%$year_month%")->get();
+        
+    }
+    
     public function favorites()
     {
         return $this->belongsToMany('App\Post')->withTimestamps();
@@ -34,6 +45,11 @@ class User extends Authenticatable
     public function communities()
     {
         return $this->belongsToMany('App\Community')->withTimestamps();
+    }
+    
+    public function rankings()   
+    {
+        return $this->hasMany('App\Post');  
     }
     /**
      * The attributes that are mass assignable.
