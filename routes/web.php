@@ -14,9 +14,9 @@ Route::group(['middleware' => 'auth'], function(){
     //トップ画面表示
     Route::get('/', 'HomeController@index');
     //主に筋トレ掲示板のルーティング
+    Route::post('/posts', 'PostController@store');
     Route::get('/posts', 'PostController@index')->name('posts');
     Route::get('/posts/create', 'PostController@create');
-    Route::post('/posts', 'PostController@store');
     Route::post('/add_workout', 'WorkoutController@work_store');
     Route::get('/workouts/{workout}', 'WorkoutController@index');
     Route::get('/users/{user}', 'UserController@index');
