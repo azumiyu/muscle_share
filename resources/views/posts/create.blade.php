@@ -56,9 +56,9 @@
             	        	@csrf
             	        	<p>追加したい種目を入力してください。</p>
             	        	<select id="category" name="workout[category_id]" class="common-select category-select">
+            	        	  <option selected disabled>部位を選択</option>
                           @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            <option selected disabled>部位を選択</option>
                           @endforeach
                         </select>
                         <label for="add-workout">種目追加</label>
