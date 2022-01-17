@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-       <body>
           <div class="container">
             <h1 class="posts-title">みんなの筋トレ掲示板</h1>
                 @foreach ($posts as $post)

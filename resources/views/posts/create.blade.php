@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-       <body>
           <div class="container">
             <h1 class="my-5 posts-title">今日の筋トレ報告！</h1>
             <form action="/posts" method="POST">
@@ -20,7 +19,7 @@
                     </optgroup>
                   @endforeach
                 </select>
-              	    <a class="js-modal-open common-submit">種目を追加する</a>
+              	<a class="js-modal-open common-submit">種目を追加する</a>
               	<p class="title__error" style="color:red">{{ $errors->first('workout.name') }}</p>
                 <p class="title__error" style="color:red">{{ $errors->first('post.workout_id') }}</p>
                   <div class="weight common-input">
