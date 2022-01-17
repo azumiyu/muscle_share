@@ -19,8 +19,6 @@ class CreatePersonalsTable extends Migration
             $table->date('date_key');
             $table->timestamps();
             $table->unsignedInteger('user_id');
-            
-            $table->unique(['date_key']);
         });
     }
 

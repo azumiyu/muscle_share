@@ -23,6 +23,7 @@ class PersonalController extends Controller
 			$weihgt_log = [];
 			$date_log = [];
 			$log = '';
+			$date_key='';
 			foreach($logs as $log){
 				$weihgt_log[] = $log->weight;
 				$date_log[] = $log->date_key;
@@ -31,6 +32,7 @@ class PersonalController extends Controller
 			// 体重入力欄に載せるための体重データを取得
 			foreach($user->personals->sortBy('date_key') as $personal){
 				$log = $personal->weight;
+				$date_key = $personal->date_key;
 			}
 			
 			return view("personals.index",[
@@ -38,7 +40,8 @@ class PersonalController extends Controller
 				"weight_log" => $weihgt_log,
 			])->with([
 				'year_month' => $year_month,
-				'log' => $log
+				'log' => $log,
+				'date_key' => $date_key,
 				]);
 		}
 		return redirect('/')->with('flash_message', '他の人の体重は見れません。');
