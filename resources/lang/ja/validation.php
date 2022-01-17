@@ -152,6 +152,6 @@ return [
         'post.rep' =>'回数',
         'workout.name' =>'筋トレ種目',
         'post.weight' =>'キロ数',
-        ],
-
+        'personal.date_key' =>'日付'
+    ]
 ];

@@ -9,7 +9,7 @@ class PersonalRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @recturn bool
      */
     public function authorize()
     {
@@ -25,7 +25,7 @@ class PersonalRequest extends FormRequest
     {
         return [
             'personal.weight' => 'required',
-            'personal.date_key' => 'required|string|unique:personals,date_key',
+            'personal.date_key' => 'required|string|unique:personals.date_key',
         ];
     }
 }

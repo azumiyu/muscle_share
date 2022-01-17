@@ -65,6 +65,18 @@
                                     <a class="dropdown-item" href="/home">
                                         トップ画面へ
                                     </a>
+                                    <a class="dropdown-item" href="/posts">
+                                        掲示板
+                                    </a>
+                                    <a class="dropdown-item" href="/communities">
+                                        コミュニティ
+                                    </a>
+                                    <a class="dropdown-item" href="/rankings">
+                                        ランキング
+                                    </a>
+                                    <a class="dropdown-item" href="/personals/{{ Auth::id() }}">
+                                        成長記録
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
