@@ -13,21 +13,18 @@ class WorkoutsTableSeeder extends Seeder
     {
          \DB::table('workouts')->insert([
         [
-            'id' => '1',
             'name' => 'ベンチプレス',
             'category_id' => '1',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
          ],
          [
-            'id' => '2',
             'name' => 'スクワット',
             'category_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
          ],
          [
-            'id' => '3',
             'name' => '腕立て伏せ',
             'category_id' => '3',
             'created_at' => date('Y-m-d H:i:s'),

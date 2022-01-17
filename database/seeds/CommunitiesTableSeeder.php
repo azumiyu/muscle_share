@@ -13,28 +13,24 @@ class CommunitiesTableSeeder extends Seeder
     {
          \DB::table('communities')->insert([
         [
-            'id' => '1',
             'name' => 'test',
             'target' => '頑張ろう',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
          ],
          [
-            'id' => '2',
             'name' => 'test2',
             'target' => '頑張ろう',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
          ],
          [
-            'id' => '3',
             'name' => 'test3',
             'target' => '頑張ろう',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
          ],
          [
-            'id' => '4',
             'name' => 'test4',
             'target' => '頑張ろう',
             'created_at' => date('Y-m-d H:i:s'),
