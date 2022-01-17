@@ -12,7 +12,7 @@
     <h3 class="text-center pt-2">@if($year_month != null){{ $year_month}}月の体重記録@else全体重記録@endif</h3>
     @if($date_key != date('Y-m-d'))
 	<div class="content">
-	    <a class="js-modal-open common-submit">今日の体重追加</a>
+	<a class="js-modal-open common-submit">今日の体重追加</a>
 	</div>
 	@else
 	<a class="common-submit" onclick='return confirm("今日の体重はすでに記録済みです！")'>今日の体重追加</a>

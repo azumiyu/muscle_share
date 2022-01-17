@@ -6,11 +6,11 @@
               @csrf
               <h2>筋トレ記録投稿</h2>
                 <select id="workouts-name" name="post[workout_id]" class="common-select" aria-label="Default select example">
+                  <option selected disabled>種目を選択してね</option>
                   @foreach($categories as $category)
                   @if ((count($category->workouts)) != 0)
                     <optgroup label="{{ $category->name }}">
                       @foreach($category->workouts as $workout)
-                      <option selected disabled >種目を選択してね</option>
                       <option value="{{ $workout->id }}">
                         {{$workout->name}}
                       </option>
