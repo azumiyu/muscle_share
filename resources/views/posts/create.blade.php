@@ -49,6 +49,7 @@
                   </div>
                   <input type="submit" value="投稿" class="common-submit">
             </form>
+            
             <div class="modal js-modal">
             	    <div class="modal__bg js-modal-close"></div>
             	    <div class="modal__content">
@@ -65,6 +66,7 @@
                         <input id="add-workout" type="text" name="workout[name]">
             	        	<input type = "submit" value = "入力">
             	        <div><a class="js-modal-close common-submit" href="">閉じる</a></div>
+            	        </form>
             	    </div><!--modal__inner-->
                 </div><!--modal-->
             <div class="footer">
