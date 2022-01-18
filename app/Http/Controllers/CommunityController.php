@@ -81,7 +81,7 @@ class CommunityController extends Controller
     {
         $input = $request['community'];
         $community->fill($input)->save();
-        return redirect('/communities/personal');
+        return redirect('/communities/personal/' . Auth::id());
     }
     
     public function delete(Community $community)

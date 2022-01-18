@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Community extends Model
 {
@@ -20,4 +21,6 @@ class Community extends Model
     {
         return $this->belongsToMany('App\User')->withTimestamps();
     }
+    
+    use SoftDeletes;
 }

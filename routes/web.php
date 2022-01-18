@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/communities/{community}/join', 'JoinController@store')->name('join');
     Route::post('/communities/{community}/unjoin', 'JoinController@destroy')->name('unjoin');
     Route::get('/communities/{community}/edit', 'CommunityController@edit');
+    Route::get('/communities/{community}', 'CommunityController@update');
     Route::put('/communities/{community}', 'CommunityController@update');
     Route::delete('/communities/{community}', 'CommunityController@delete');
     
