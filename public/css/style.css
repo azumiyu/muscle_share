@@ -493,3 +493,80 @@ table tr:last-child td:last-child {
   color: red;
   vertical-align: middle;
 }
+
+@media screen and (max-width: 959px) {
+	/* 959px以下に適用されるCSS（タブレット用） */
+}
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+	.posts_btn{
+    position: fixed;
+    right: 10%;
+    top: 85%;
+    display: inline-block;
+    text-decoration: none;
+    background: #87befd;
+    color: #FFF;
+    width: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    transition: .4s;
+    z-index: 1;
+    opacity: 0.8;
+  }
+  
+  .py-4 {
+    padding-top: 0 !important;
+  }
+  
+  .card {
+    margin-top: 20px!important;
+  }
+  
+  .card-body {
+    padding: 0.5rem!important;
+  }
+
+  h5, .h5 {
+    font-size: 1rem!important;
+  }
+  
+  body {
+    font-size: 0.8rem !important;
+  }
+  
+  /*posts.index.blade.php*/
+  .posts-title {
+    margin-top: 20px;
+  }
+  
+  h1, .h1 {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 0.1rem;
+    font-size: 0.7rem;
+  }
+  
+  .favorite-btn {
+      position: absolute;
+      top: 30px;
+      right: 0px;
+      color: #999999;
+      display: inline-block;
+  }
+  
+  .posts-delete {
+      position: absolute;
+      top: 30px;
+      right: 75px;
+      display: inline-block;
+  }
+  
+  .card-text {
+    margin-bottom: 0 !important;
+  }
+}
