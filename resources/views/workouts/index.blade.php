@@ -13,7 +13,7 @@
                       投稿者: <a href="/workouts/{{ $post->user->id }}" class="text-success">{{ $post->user->name }}</a>
                       {{ $post->weight }}@if($post->weight != NULL){{"kg"}}@endif　{{ $post->rep }}回　{{ $post->set }}@if($post->set != NULL){{"セット"}}@endif　{{ $post->created_at->format("Y年m月d日") }}
                     </div>
-                    <p class="card-text">コメント：{{ $post->comment }}</p>
+                    <p class="card-text posts-comment">コメント：{{ $post->comment }}</p>
                       @if($post->users()->where('user_id', Auth::id())->exists())
                       <div class="favorite-btn">
                         <form action="{{ route('unfavorites', $post) }}" method="POST">

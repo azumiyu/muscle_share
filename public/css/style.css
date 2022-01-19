@@ -120,6 +120,10 @@
       right: 100px;
       display: inline-block;
   }
+  
+  .posts-comment {
+    width: 80%;
+  }
 
 /*posts:create.blade.php*/
 .common-input {
@@ -415,7 +419,7 @@
   margin-right: auto;
   margin-top: 20px;
   border-collapse: collapse;
-  width: 600px;
+  width: 70%;
   border-collapse:separate;
   border-spacing: 0;
 }
@@ -494,11 +498,19 @@ table tr:last-child td:last-child {
   vertical-align: middle;
 }
 
+.br-sp {
+	  display: none; 
+	}
+
 @media screen and (max-width: 959px) {
 	/* 959px以下に適用されるCSS（タブレット用） */
 }
 @media screen and (max-width: 480px) {
 	/* 480px以下に適用されるCSS（スマホ用） */
+	.br-sp {
+	  display: block; 
+	}
+	
 	.posts_btn{
     position: fixed;
     right: 10%;
@@ -538,6 +550,10 @@ table tr:last-child td:last-child {
   }
   
   /*posts.index.blade.php*/
+  .posts-top {
+    font-size: 14px !important;
+  }
+  
   .posts-title {
     margin-top: 20px;
   }
@@ -547,13 +563,13 @@ table tr:last-child td:last-child {
   }
   
   .btn {
-    padding: 0.1rem;
+    padding: 0.3rem;
     font-size: 0.7rem;
   }
   
   .favorite-btn {
       position: absolute;
-      top: 30px;
+      top: 40px;
       right: 0px;
       color: #999999;
       display: inline-block;
@@ -561,12 +577,54 @@ table tr:last-child td:last-child {
   
   .posts-delete {
       position: absolute;
-      top: 30px;
+      top: 40px;
       right: 75px;
       display: inline-block;
   }
   
   .card-text {
     margin-bottom: 0 !important;
+  }
+  /*users.index.blade.php*/
+  .posts-comment {
+    width: 60%;
+  }
+  
+  /*posts.create.blade.php*/
+  .common-input {
+    margin-top: 20px;
+  }
+
+  .common-input input[type="number"] {
+    width: 50%;
+  }
+  
+  .common-input input[type="text"] {
+    width: 80%;
+  }
+  
+  .common-input textarea {
+    width: 80%;
+  }
+  
+  /*communities.index.blade.php*/
+  .community-btn-wrapper {
+    display: initial;
+  }
+ 
+ .community-btn a {
+  padding: 0.5em 1em;
+  font-size: 12px;
+  margin-top: 10px;
+  }
+  
+  /*rankings.show.blade.php*/
+  table, th, td {
+    width: auto !important;
+    padding: 5px 10px !important;
+  }
+  
+  .table_box {
+    width: initial;
   }
 }

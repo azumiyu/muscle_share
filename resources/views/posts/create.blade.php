@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
           <div class="container">
-            <h1 class="my-5 posts-title">今日の筋トレ報告！</h1>
+            <h1 class="posts-title">今日の筋トレ報告！</h1>
             <form action="/posts" method="POST">
               @csrf
               <h2>筋トレ記録投稿</h2>

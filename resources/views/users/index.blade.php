@@ -13,13 +13,13 @@
                       種目: <a href="/workouts/{{ $post->workout->id }}" class="text-success">{{ $post->workout->name }}</a>
                       {{ $post->weight }}@if($post->weight != NULL){{"kg"}}@endif　{{ $post->rep }}回　{{ $post->set }}@if($post->set != NULL){{"セット"}}@endif　{{ $post->created_at->format("Y年m月d日") }}
                     </div>
-                    <p class="card-text">コメント：{{ $post->comment }}</p>
+                    <p class="card-text posts-comment">コメント：{{ $post->comment }}</p>
                       @if($post->users()->where('user_id', Auth::id())->exists())
                       <div class="favorite-btn">
                         <form action="{{ route('unfavorites', $post) }}" method="POST">
                            @csrf
                            <input type="submit" value="いいね" class="btn btn-success">
-                           <p>いいね数：{{ $post->users()->count() }}</p>
+                           <p class="favorite-count">いいね数：{{ $post->users()->count() }}</p>
                         </form>
                        </div>
                       @else
@@ -27,7 +27,7 @@
                         <form action="{{ route('favorites', $post) }}" method="POST">
                           @csrf
                           <input type="submit" value="いいね" class="btn btn-secondary">
-                          <p>いいね数：{{ $post->users()->count() }}</p>
+                          <p class="favorite-count">いいね数：{{ $post->users()->count() }}</p>
                         </form>
                        </div>
                       @endif
@@ -39,7 +39,7 @@
                             <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("削除しますか？");'>
                         </form>
                       </div>
-                      @endif
+                    @endif
                 </div>
             </div>
            @endforeach

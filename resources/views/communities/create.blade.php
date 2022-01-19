@@ -20,7 +20,7 @@
                   <input type="submit" value="投稿" class="common-submit">
             </form>
             <div class="footer">
-              <a href="/communities">戻る</a>
+              <a href="" onclick="history.back(-1);return false;" class="btn btn-primary mt-2">戻る</a>
             </div>
           </div>
 @endsection
