@@ -10,7 +10,7 @@
                       投稿者: <a href="/users/{{ $post->user->id}}" class="text-success">{{ $post->user->name }}</a>
                     </div>
                     <p class="card-text">{{ $post->weight }}@if($post->weight != NULL){{"kg"}}@endif　{{ $post->rep }}回　{{ $post->set }}@if($post->set != NULL){{"セット"}} @endif</p><hr>
-                    <p class="card-text">コメント：{{ $post->comment }}</p>
+                    <p class="card-text posts-index-comment">コメント：{{ $post->comment }}</p>
                     <p class="text-right text-secondary">{{ $post->created_at->format('Y年m月d日') }}</p>
                       @if($post->users()->where('user_id', Auth::id())->exists())
                       <div class="favorite-btn">
