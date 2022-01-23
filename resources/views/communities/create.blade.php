@@ -13,8 +13,9 @@
                       <p class="title__error" style="color:red">{{ $errors->first('community.name') }}</p>
                   </div>
                   <div class="target common-input">
-                      <textarea id="community_target" name="community[target]" placeholder="例：肩をパンプアップしまくりましょう。やる気がある人は大歓迎です！（最大200文字）">{{ old('community.comment') }}</textarea>
+                      <textarea id="community_target" name="community[target]" placeholder="例：肩をパンプアップしまくりましょう。やる気がある人は大歓迎です！（最大200文字）" class="limit-textarea">{{ old('community.comment') }}</textarea>
                       <label for="community_target">目標</label>
+                      <p id="count">あと<span id="num"></span>文字</p>
                       <p class="body__error" style="color:red">{{ $errors->first('community.target') }}</p>
                   </div>
                   <input type="submit" value="投稿" class="common-submit">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\WorkoutRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Workout;
+use App\Category;
 
 class WorkoutController extends Controller
 {
@@ -17,6 +19,13 @@ class WorkoutController extends Controller
     {
         $input = $request['workout'];
         $workout->fill($input)->save();
-        return redirect('/posts/create');
+        return redirect('/posts/create')->with('flash_message', '種目を追加しました！');
+    }
+    
+    public function category_store(CategoryRequest $request, Category $category)
+    {
+        $input = $request['category'];
+        $category->fill($input)->save();
+        return redirect('/posts/create')->with('flash_message', '部位を追加しました！');
     }
 }

@@ -2,6 +2,11 @@
 @section('content')
           <div class="container">
             <h1 class="posts-title">今日の筋トレ報告！</h1>
+            @if (Session::has('flash_message'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('flash_message') }}
+              </div>
+            @endif
             <form action="/posts" method="POST">
               @csrf
               <h2>筋トレ記録投稿</h2>
@@ -19,8 +24,10 @@
                     </optgroup>
                   @endforeach
                 </select>
-              	<a class="js-modal-open common-submit">種目を追加する</a>
+              	<a class="js-modal-open common-submit" data-target="modal01">種目を追加する</a>
+              	<a class="js-modal-open common-submit" data-target="modal02">部位を追加する</a>
               	<p class="title__error" style="color:red">{{ $errors->first('workout.name') }}</p>
+              	<p class="title__error" style="color:red">{{ $errors->first('category.name') }}</p>
                 <p class="title__error" style="color:red">{{ $errors->first('post.workout_id') }}</p>
                   <div class="weight common-input">
                       <!-- name 属性のところはリクエストの配列のキーの部分にあたる。-->
@@ -42,35 +49,50 @@
                       <input type="hidden" name="post[user_id]" value="{{ Auth::user()->id }}"/>
                   </div>
                   <div class="comment common-input">
-                      <textarea id="comment" name="post[comment]" placeholder="例：追い込みすぎた笑">{{ old('post.comment') }}</textarea>
+                      <textarea id="comment" name="post[comment]" placeholder="例：追い込みすぎた笑" class="limit-textarea">{{ old('post.comment') }}</textarea>
                       <label for="comment">コメント</label>
+                      <p id="count">あと<span id="num"></span>文字</p>
                       <p class="body__error" style="color:red">{{ $errors->first('post.comment') }}</p>
                   </div>
                   <input type="submit" value="投稿" class="common-submit">
             </form>
             
-            <div class="modal js-modal">
-            	    <div class="modal__bg js-modal-close"></div>
-            	    <div class="modal__content">
-            	        <form action="/add_workout" method="POST">
-            	        	@csrf
-            	        	<p>追加したい種目を入力してください。</p>
-            	        	<select id="category" name="workout[category_id]" class="common-select category-select">
-            	        	  <option selected disabled>部位を選択</option>
-                          @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                          @endforeach
-                        </select>
-                        <label for="add-workout">種目追加</label>
-                        <input id="add-workout" type="text" name="workout[name]">
-            	        	<input type = "submit" value = "入力">
-            	        <div><a class="js-modal-close common-submit" href="">閉じる</a></div>
-            	        </form>
-            	    </div><!--modal__inner-->
-                </div><!--modal-->
-            <div class="footer">
-            <a href="javascript:history.back()" class="btn btn-primary mt-3">戻る</a>
-            </div>
+            <div id="modal01" class="modal js-modal">
+              <div class="modal__bg js-modal-close"></div>
+              <div class="modal__content">
+                  <form action="/add_workout" method="POST">
+                    @csrf
+                    <p>追加したい種目を入力してください。</p>
+                    <select id="category" name="workout[category_id]" class="common-select category-select">
+                      <option selected disabled>部位を選択</option>
+                      @foreach($categories as $category)
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endforeach
+                    </select>
+                    <label for="add-workout">種目追加</label>
+                    <input id="add-workout" type="text" name="workout[name]">
+                    <input type = "submit" value = "入力">
+                    <div><a class="js-modal-close common-submit" href="">閉じる</a></div>
+                  </form>
+              </div><!--modal__inner-->
+            </div><!--modal-->
             
+            <div id="modal02" class="modal js-modal">
+              <div class="modal__bg js-modal-close"></div>
+              <div class="modal__content">
+                  <form action="/add_category" method="POST">
+                    @csrf
+                    <p>追加したい部位を入力してください。</p>
+                    <label for="add-category">部位追加</label>
+                    <input id="add-category" type="text" name="category[name]">
+                    <input type = "submit" value = "入力">
+                    <div><a class="js-modal-close common-submit" href="">閉じる</a></div>
+                  </form>
+              </div><!--modal__inner-->
+            </div><!--modal-->
+            
+            <div class="footer">
+              <a href="javascript:history.back()" class="btn btn-primary mt-3">戻る</a>
+            </div>
           </div>
 @endsection

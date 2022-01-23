@@ -2,6 +2,11 @@
 @section('content')
           <div class="container">
             <h1 class="posts-title">みんなの筋トレ掲示板</h1>
+            @if (Session::has('flash_message'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('flash_message') }}
+              </div>
+            @endif
                 @foreach ($posts as $post)
                 <div class="card mb-3 posts_card">
                   <div class="card-body posts-item">

@@ -15,7 +15,6 @@ use Auth;
 class PersonalController extends Controller
 {
 	public function index(User $user,Request $request){
-		//year_monthの年月と一致する体重をdate_keyの昇順に取得	
 		$year_month = $request->year_month;
 		$users = $user->personals2($year_month);
 		if(Auth::id() == $user->id){
@@ -29,7 +28,6 @@ class PersonalController extends Controller
 				$date_log[] = $log->date_key;
 			}
 			
-			// 体重入力欄に載せるための体重データを取得
 			foreach($user->personals->sortBy('date_key') as $personal){
 				$log = $personal->weight;
 				$date_key = $personal->date_key;
@@ -42,7 +40,7 @@ class PersonalController extends Controller
 				'year_month' => $year_month,
 				'log' => $log,
 				'date_key' => $date_key,
-				]);
+			]);
 		}
 		return redirect('/')->with('flash_message', '他の人の体重は見れません。');
 	}

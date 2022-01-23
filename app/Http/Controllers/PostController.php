@@ -13,8 +13,6 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        //return view('index')は、viewsのindex.blade.phpを表示する
-        //with(['post' => $post]);で、blade.phpでpostsが使えるようになる
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);  
     }
     
@@ -27,7 +25,7 @@ class PostController extends Controller
     {
         $input = $request['post'];
         $post->fill($input)->save();
-        return redirect('/posts');
+        return redirect('/posts')->with('flash_message', '投稿しました！');
     }
     
     public function delete(Post $post)

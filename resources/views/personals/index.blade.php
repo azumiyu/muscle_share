@@ -12,19 +12,18 @@
     <h3 class="text-center pt-2">@if($year_month != null){{ $year_month}}月の体重記録@else全体重記録@endif</h3>
     @if($date_key != date('Y-m-d'))
 	<div class="content">
-	<a class="js-modal-open common-submit">今日の体重追加</a>
+	<a class="js-modal-open common-submit" data-target="modal01">今日の体重追加</a>
 	</div>
 	@else
 	<a class="common-submit" onclick='return confirm("今日の体重はすでに記録済みです！")'>今日の体重追加</a>
 	@endif
-	<div class="modal js-modal">
+	<div id="modal01" class="modal js-modal">
 	    <div class="modal__bg js-modal-close"></div>
 	    <div class="modal__content">
 	        <form action="/personals" method="POST">
 	        	@csrf
-	        	<p>体重を入力します。体重には最新日の記録が残っています。</p>
-	        	<label for ="date">日付</label>
-	        	<input id = "date" type="date" name="personal[date_key]" min="2000-01" max="2100-12" value="{{ date('Y-m-d') }}" readonly><br>
+	        	<p>今日の体重を入力します。体重には最新日の記録が残っています。</p>
+	        	<input id = "date" type="hidden" name="personal[date_key]" value="{{ date('Y-m-d') }}"><br>
 	        	<label for ="weight">体重</label>
 	        	<input id ="weight" type="number" step="0.01" name="personal[weight]" placeholder="例:60" value="{{ $log }}">
 	        	<input type = "submit" value = "入力">

@@ -15,8 +15,6 @@ class CommunityController extends Controller
 {
     public function index(Community $community, User $user)
     {
-        //return view('index')は、viewsのindex.blade.phpを表示する
-        //with(['posts' => $post]);で、blade.phpでpostsが使えるようになる
         return view('communities.index')->with([
             'communities' => $community->getPaginateByLimit(),
             'user' => $user->getByuser()
@@ -32,13 +30,11 @@ class CommunityController extends Controller
     {
         $input = $request['community'];
         $community->fill($input)->save();
-        return redirect('/communities');
+        return redirect('/communities')->with('flash_message-success','新しいコミュニティを作成しました！');
     }
     
     public function show(User $user)
     {
-        // dd($user->communities()->get());
-        // $community = Community::where('user_id', $user->id)->get();
         $community_paginate = $user->communities()->paginate(9);
         if(Auth::id() == $user->id){
         return view('communities.show')->with([
@@ -49,7 +45,7 @@ class CommunityController extends Controller
         return redirect('/communities')->with('flash_message','自分以外の人の所属コミュニティは見れません。');
     }
     
-    public function showGroup(Community $community, Post $post, User $user)
+    public function showGroup(Community $community)
     {
         $community_user_ids = [];
         foreach($community->users as $user) {
@@ -57,14 +53,14 @@ class CommunityController extends Controller
         }
         $post = Post::orderBy("created_at",'desc')->whereIn('user_id', $community_user_ids)->paginate(10);
         foreach($community->users as $user) {
-        if($user->id == Auth::id()) {
-        return view('communities.showGroup')->with([
-            'community' => $community,
-            'posts' => $post,
-            ]);
-        } 
-    }
-    return redirect('/communities')->with('flash_message', 'このコミュニティには参加していません。');
+            if($user->id == Auth::id()) {
+            return view('communities.showGroup')->with([
+                'community' => $community,
+                'posts' => $post,
+                ]);
+            } 
+        }
+        return redirect('/communities')->with('flash_message', 'このコミュニティには参加していません。');
     }
     
     public function edit(Community $community)
@@ -81,7 +77,7 @@ class CommunityController extends Controller
     {
         $input = $request['community'];
         $community->fill($input)->save();
-        return redirect('/communities/personal/' . Auth::id());
+        return redirect('/communities/personal/' . Auth::id())->with('flash_message','コミュニティを編集しました！');
     }
     
     public function delete(Community $community)

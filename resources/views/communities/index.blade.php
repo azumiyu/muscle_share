@@ -1,12 +1,18 @@
 @extends('layouts.app')
 @section('content')
-@if (Session::has('flash_message'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('flash_message') }}
-    </div>
-@endif
 <div class="container">
     <h1 class="posts-title">コミュニティ</h1>
+    @if (Session::has('flash_message'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('flash_message') }}
+        </div>
+    @endif
+    
+    @if (Session::has('flash_message-success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('flash_message-success') }}
+        </div>
+    @endif
     <div class="community-btn-wrapper">
         <div class="community-btn">
           <a href="/communities/create">新しいコミュニティを作る</a>

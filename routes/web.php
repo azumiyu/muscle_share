@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/posts/create', 'PostController@create');
     Route::post('/posts', 'PostController@store');
     Route::post('/add_workout', 'WorkoutController@work_store');
+    Route::post('/add_category', 'WorkoutController@category_store');
     Route::get('/workouts/{workout}', 'WorkoutController@index');
     Route::get('/users/{user}', 'UserController@index');
     Route::post('posts/{post}/favorites', 'FavoriteController@store')->name('favorites');

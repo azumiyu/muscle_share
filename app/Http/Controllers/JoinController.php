@@ -37,7 +37,6 @@ class JoinController extends Controller
     public function store(Community $community)
     {
         $community->users()->attach(Auth::id());
-
         return back();
     }
 
@@ -84,7 +83,6 @@ class JoinController extends Controller
     public function destroy(Community $community)
     {
         $community->users()->detach(Auth::id());
-
         return back();
     }
 }

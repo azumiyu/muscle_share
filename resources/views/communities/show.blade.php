@@ -2,6 +2,11 @@
 @section('content')
 <div class="container">
     <h1 class="posts-title">自分の所属コミュニティ</h1>
+    @if (Session::has('flash_message'))
+      <div class="alert alert-success" role="alert">
+          {{ session('flash_message') }}
+      </div>
+    @endif
     <div class="community-btn-wrapper">
         <div class="community-btn">
           <a href="/communities/create">新しいコミュニティを作る</a>
