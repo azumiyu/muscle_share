@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
