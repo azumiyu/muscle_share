@@ -50,7 +50,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 // LINE API
 // LINE メッセージ受信
-Route::get('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
 Route::post('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
 // LINE メッセージ送信用
 Route::get('/line/message', 'LineMessengerController@message');
