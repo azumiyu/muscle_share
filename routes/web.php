@@ -46,15 +46,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/personals', 'PersonalController@store');
     Route::get('/personals/{user}', 'PersonalController@index');
     
-    // LINE API
-    // LINE メッセージ受信
-    Route::get('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
-    Route::post('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
-     
-    // LINE メッセージ送信用
-    Route::get('/line/message', 'LineMessengerController@message');
-    
 });
+
+// LINE API
+// LINE メッセージ受信
+Route::post('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
+// LINE メッセージ送信用
+Route::get('/line/message', 'LineMessengerController@message');
 
 Auth::routes();
 
