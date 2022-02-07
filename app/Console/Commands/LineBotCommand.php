@@ -40,7 +40,7 @@ class LineBotCommand extends Command
      *
      * @return mixed
      */
-    public function handle(Request $request)
+    public function handle()
     {
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
@@ -50,7 +50,7 @@ class LineBotCommand extends Command
         $reply_message='メッセージありがとうございます';
  
         // ユーザーにメッセージを返す
-        $reply=$bot->pushMessage('yuki0517baseball',$reply_message);
+        $reply=$bot->pushMessage('yuki',$reply_message);
         return 'ok';
     }
 }

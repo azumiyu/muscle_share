@@ -49,7 +49,6 @@ class LineMessengerController extends Controller
                 $user->name=$profile['displayName'];
                 $user->save();
             }
-            
             return 'ok';
         }
     }
