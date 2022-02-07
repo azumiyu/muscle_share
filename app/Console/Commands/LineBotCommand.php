@@ -16,14 +16,14 @@ class LineBotCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'command:lineBot';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Lineで1ヶ月に1回ランキングを表示します。';
 
     /**
      * Create a new command instance.
@@ -50,7 +50,7 @@ class LineBotCommand extends Command
         $reply_message='メッセージありがとうございます';
  
         // ユーザーにメッセージを返す
-        $reply=$bot->replyText($reply_message);
+        $reply=$bot->replyText('yuki0517baseball',$reply_message);
         return 'ok';
     }
 }
