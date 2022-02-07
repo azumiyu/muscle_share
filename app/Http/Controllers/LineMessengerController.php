@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 class LineMessengerController extends Controller
 {
     public function webhook(Request $request) {
+        // LINEから送られた内容を$inputsに代入
+        $inputs=$request->all();
+ 
+        // そこからtypeをとりだし、$message_typeに代入
+        $message_type=$inputs['events'][0]['type'];
+ 
+        // メッセージが送られた場合、$message_typeは'message'となる。その場合処理実行。
+        if($message_type=='message') {
+            
             // replyTokenを取得
             $reply_token=$inputs['events'][0]['replyToken'];
  
@@ -26,6 +35,22 @@ class LineMessengerController extends Controller
             
             // LINEのユーザーIDをuserIdに代入
             $userId=$request['events'][0]['source']['userId'];
+ 
+            // userIdがあるユーザーを検索
+            $user=User::where('line_id', $userId)->first();
+ 
+            // もし見つからない場合は、データベースに保存
+            if($user==NULL) {
+                $profile=$bot->getProfile($userId)->getJSONDecodedBody();
+ 
+                $user=new User();
+                $user->provider='line';
+                $user->line_id=$userId;
+                $user->name=$profile['displayName'];
+                $user->save();
+            }
+            
             return 'ok';
+        }
     }
 }

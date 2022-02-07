@@ -42,8 +42,6 @@ class LineBotCommand extends Command
      */
     public function handle(Request $request)
     {
-        $reply_token=$inputs['events'][0]['replyToken'];
- 
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
@@ -52,7 +50,7 @@ class LineBotCommand extends Command
         $reply_message='メッセージありがとうございます';
  
         // ユーザーにメッセージを返す
-        $reply=$bot->replyText($reply_token, $reply_message);
+        $reply=$bot->replyText($reply_message);
         return 'ok';
     }
 }
