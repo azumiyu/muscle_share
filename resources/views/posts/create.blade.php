@@ -95,5 +95,4 @@
               <a href="javascript:history.back()" class="btn btn-primary mt-3">戻る</a>
             </div>
           </div>
-           {{$userIds}}
 @endsection

@@ -20,8 +20,8 @@ class PostController extends Controller
     {
          $user = User::orderBy("created_at",'desc');
             // LINEユーザーID指定
-        $userIds = $user->pluck("line_id");
-        return view('posts.create')->with(['workouts' => $workout->get(),'users' => $user->get(),'categories' => $category->get(),'userIds'=>$userIds]);
+        $userIds = $user->pluck("line_id")->toArray();
+        return view('posts.create')->with(['workouts' => $workout->get(),'users' => $user->get(),'categories' => $category->get()]);
     }
     
      public function store(PostRequest $request, Post $post)
