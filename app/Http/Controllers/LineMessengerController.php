@@ -28,7 +28,7 @@ class LineMessengerController extends Controller
             $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
  
             // 送信するメッセージの設定
-            $reply_message='メッセージありがとうございます';
+            $reply_message='今日も筋トレがんばろおおお！';
  
             // ユーザーにメッセージを返す
             $reply=$bot->replyText($reply_token, $reply_message);
@@ -62,7 +62,7 @@ class LineMessengerController extends Controller
         
         $user = User::orderBy("created_at",'desc');
         // LINEユーザーID指定
-        $userIds = ['U55e68c24f95d3734d8e09df0454b756e', '<userId2>'];
+        $userIds = ['U55e68c24f95d3734d8e09df0454b756e'];
         // メッセージ設定
         $message = "こんにちは！";
  
