@@ -50,7 +50,7 @@ class LineBotCommand extends Command
         $reply_message='メッセージありがとうございます';
  
         // ユーザーにメッセージを返す
-        $reply=$bot->replyText('yuki0517baseball',$reply_message);
+        $reply=$bot->pushMessage('yuki0517baseball',$reply_message);
         return 'ok';
     }
 }
