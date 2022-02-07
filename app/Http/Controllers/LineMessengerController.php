@@ -62,14 +62,14 @@ class LineMessengerController extends Controller
         
         foreach($user->get() as $user) {
         // LINEユーザーID指定
-        $userId = "U55e68c24f95d3734d8e09df0454b756e";
+        $userId = $user->name;
         }
+        dd($userId);
         // メッセージ設定
         $message = "こんにちは！";
  
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);
         $response    = $bot->pushMessage($userId, $textMessageBuilder);
- 
     }
 }

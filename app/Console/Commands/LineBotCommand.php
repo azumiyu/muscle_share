@@ -42,6 +42,7 @@ class LineBotCommand extends Command
      */
     public function handle()
     {
-        header('Location: https://blooming-brook-25294.herokuapp.com/line/message');
+        $linePost = file_get_contents('https://blooming-brook-25294.herokuapp.com/line/message');
+        echo $linePost;
     }
 }
