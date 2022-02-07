@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
-use App\Models\User;
+use App\User;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use Illuminate\Http\Request;
 
@@ -40,8 +40,9 @@ class LineBotCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(User $user)
     {
+        foreach($user->get() as $user) {
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
@@ -50,7 +51,8 @@ class LineBotCommand extends Command
         $reply_message='メッセージありがとうございます';
  
         // ユーザーにメッセージを返す
-        $reply=$bot->pushMessage('yuki',$reply_message);
+        $reply=$bot->pushMessage($user->line_id,$reply_message);
         return 'ok';
+        }
     }
 }
