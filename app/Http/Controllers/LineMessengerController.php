@@ -61,13 +61,13 @@ class LineMessengerController extends Controller
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
         
         $user = User::orderBy("created_at",'desc');
-            // LINEユーザーID指定
+        // LINEユーザーID指定
         $userIds = $user->pluck("line_id")->toArray();
         // メッセージ設定
         $message = "こんにちは！";
  
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);
-        $response = $bot->multicast($userIds, $textMessageBuilder);
+        $bot->multicast($userIds, $textMessageBuilder);
     }
 }
