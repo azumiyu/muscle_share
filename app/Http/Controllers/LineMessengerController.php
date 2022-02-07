@@ -62,12 +62,12 @@ class LineMessengerController extends Controller
         
         $user = User::orderBy("created_at",'desc');
         // LINEユーザーID指定
-        $userIds = $user->pluck("line_id")->toArray();
+        $userIds = ['U55e68c24f95d3734d8e09df0454b756e', '<userId2>'];
         // メッセージ設定
         $message = "こんにちは！";
  
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);
-        $bot->multicast($userIds, $textMessageBuilder);
+        $response = $bot->multicast($userIds, $textMessageBuilder);
     }
 }
