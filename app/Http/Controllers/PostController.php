@@ -18,9 +18,6 @@ class PostController extends Controller
     
     public function create(Workout $workout, User $user, Category $category)
     {
-         $user = User::orderBy("created_at",'desc');
-            // LINEユーザーID指定
-        $userIds = $user->pluck("line_id")->toArray();
         return view('posts.create')->with(['workouts' => $workout->get(),'users' => $user->get(),'categories' => $category->get()]);
     }
     
