@@ -62,8 +62,9 @@ class LineMessengerController extends Controller
         
         $user = User::orderBy("created_at",'desc');
             // LINEユーザーID指定
-        $users = $user->get()->toArray('line_id');
-        $userIds = array_column($users, 'line_id');
+        $users = $user;
+        $userIds = $users->pluck("line_id");
+
         // メッセージ設定
         $message = "こんにちは！";
  
