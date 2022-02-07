@@ -64,10 +64,15 @@ class LineMessengerController extends Controller
         // LINEユーザーID指定
         $userIds = $user->pluck("line_id")->whereNotNull()->toArray();
         // メッセージ設定
-        $message = "こんにちは！";
+        $message="今月のランキング！\n
+        ベンチプレス:https://blooming-brook-25294.herokuapp.com/rankings/1?year_month=date('y-m')\n
+        スクワット:https://blooming-brook-25294.herokuapp.com/rankings/2?year_month=date('y-m')\n
+        その他はここから！！↓\n
+        https://blooming-brook-25294.herokuapp.com/rankings";
  
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);
         $response = $bot->multicast($userIds, $textMessageBuilder);
     }
+    
 }

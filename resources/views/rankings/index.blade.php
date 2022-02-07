@@ -19,5 +19,9 @@
         </div>
     @endforeach
     </div>
+    <div class="line-register py-5">
+      <a href="https://lin.ee/QoANHzh"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+      <p>↑[Muscle Share]の非公式アカウントです！！<br>アカウントを追加すると1ヶ月に2回、ランキングを自動で表示してくれます！！</p>
+    </div>
 </div>
 @endsection
