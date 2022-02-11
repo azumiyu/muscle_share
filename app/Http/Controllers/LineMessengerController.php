@@ -107,6 +107,12 @@ class LineMessengerController extends Controller
             $rank = $i + 1;
             $squat = $rank."位 ".$name2[$i]." ".$weight2[$i]."kg ".$rep2[$i]."回".PHP_EOL;
         }
+        if ($squat = NULL) {
+            $squat = "今月のスクワットのデータはありません";
+        }
+        if ($bench = NULL) {
+            $bench = "今月のスクワットのデータはありません";
+        }
         
         $message="今月のランキング！
         ベンチプレス→".PHP_EOL.
