@@ -98,20 +98,21 @@ class LineMessengerController extends Controller
             $rep2[] = $workoutrank->rep;
         }
          
-        $message="今月のランキング！
-        ベンチプレス→
-        １位 ".$name1[0]." ".$weight1[0]."kg ".$rep1[0]."回".PHP_EOL.
-        "2位 ".$name1[1]." ".$weight1[1]."kg ".$rep1[1]."回".PHP_EOL.
-        "3位 ".$name1[2]." ".$weight1[2]."kg ".$rep1[2]."回".PHP_EOL.
-        "4位 ".$name1[3]." ".$weight1[3]."kg ".$rep1[3]."回".PHP_EOL.
-        "5位 ".$name1[4]." ".$weight1[4]."kg ".$rep1[4]."回".PHP_EOL.
+        for($i=0; $i< count($name1);$i++){
+            $rank = $i + 1;
+            $bench = $rank."位 ".$name1[$i]." ".$weight1[$i]."kg ".$rep1[$i]."回".PHP_EOL;
+        }
         
-        "スクワット→
-        １位 ".$name2[0]." ".$weight2[0]."kg ".$rep2[0]."回".PHP_EOL.
-        "2位 ".$name2[1]." ".$weight2[1]."kg ".$rep2[1]."回".PHP_EOL.
-        "3位 ".$name2[2]." ".$weight2[2]."kg ".$rep2[2]."回".PHP_EOL.
-        "4位 ".$name2[3]." ".$weight2[3]."kg ".$rep2[3]."回".PHP_EOL.
-        "5位 ".$name2[4]." ".$weight2[4]."kg ".$rep2[4]."回".PHP_EOL.
+        for($i=0; $i< count($name2);$i++){
+            $rank = $i + 1;
+            $squat = $rank."位 ".$name2[$i]." ".$weight2[$i]."kg ".$rep2[$i]."回".PHP_EOL;
+        }
+        
+        $message="今月のランキング！
+        ベンチプレス→".PHP_EOL.
+        $bench.
+        "スクワット→".PHP_EOL.
+        $squat.
         "その他ランキングは以下からチェック！
         https://blooming-brook-25294.herokuapp.com/rankings";
  
