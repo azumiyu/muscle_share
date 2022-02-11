@@ -98,6 +98,8 @@ class LineMessengerController extends Controller
             $rep2[] = $workoutrank->rep;
         }
          
+        $bench = "";
+        $squat = "";
         for($i=0; $i< count($name1);$i++){
             $rank = $i + 1;
             $bench = $rank."位 ".$name1[$i]." ".$weight1[$i]."kg ".$rep1[$i]."回".PHP_EOL;
@@ -106,14 +108,6 @@ class LineMessengerController extends Controller
         for($i=0; $i< count($name2);$i++){
             $rank = $i + 1;
             $squat = $rank."位 ".$name2[$i]." ".$weight2[$i]."kg ".$rep2[$i]."回".PHP_EOL;
-        }
-        
-        if (is_null($squat)){
-          $squat = "今月のスクワットのデータはありません";
-        }
-        
-        if (is_null($bench)) {
-            $bench = "今月のスクワットのデータはありません";
         }
         
         $message="今月のランキング！
