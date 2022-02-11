@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\User;
+use App\Post;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 use Illuminate\Http\Request;
