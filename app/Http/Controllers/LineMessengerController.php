@@ -54,7 +54,7 @@ class LineMessengerController extends Controller
     }
     
     // メッセージ送信用
-    public function message() {
+    public function message(Post $post) {
  
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
@@ -63,11 +63,55 @@ class LineMessengerController extends Controller
         $user = User::orderBy("created_at",'desc');
         // LINEユーザーID指定
         $userIds = $user->pluck("line_id")->whereNotNull()->toArray();
-        // メッセージ設定
-        $message="今月のランキング！\n
-        ベンチプレス:https://blooming-brook-25294.herokuapp.com/rankings/1?year_month=date('y-m')\n
-        スクワット:https://blooming-brook-25294.herokuapp.com/rankings/2?year_month=date('y-m')\n
-        その他はここから！！↓\n
+        
+        //メッセージ設定
+        $benchRanking = $post->benchData()->sort(function ($first, $second){
+        if ($first['weight'] == $second['weight']) {
+            return $first['rep'] < $second['rep'] ? 1 : -1 ;
+        }
+        return $first['weight'] < $second['weight'] ? 1 : -1 ;
+        })->unique('user_id')->take(5);
+        
+        $squatRanking = $post->squatData()->sort(function ($first, $second){
+        if ($first['weight'] == $second['weight']) {
+            return $first['rep'] < $second['rep'] ? 1 : -1 ;
+        }
+        return $first['weight'] < $second['weight'] ? 1 : -1 ;
+        })->unique('user_id')->take(5);
+        
+        $name1 = [];
+        $weight1 = [];
+        $rep1 = [];
+        foreach ($benchRanking as $workoutrank) {
+            $name1[] = $workoutrank->user->name;
+            $weight1[] = $workoutrank->weight;
+            $rep1[] = $workoutrank->rep;
+        }
+        
+        $name2 = [];
+        $weight2 = [];
+        $rep2 = [];
+        foreach ($squatRanking as $workoutrank) {
+            $name2[] = $workoutrank->user->name;
+            $weight2[] = $workoutrank->weight;
+            $rep2[] = $workoutrank->rep;
+        }
+         
+        $message="今月のランキング！
+        ベンチプレス→
+        １位 ".$name1[0]." ".$weight1[0]."kg ".$rep1[0]."回".PHP_EOL.
+        "2位 ".$name1[1]." ".$weight1[1]."kg ".$rep1[1]."回".PHP_EOL.
+        "3位 ".$name1[2]." ".$weight1[2]."kg ".$rep1[2]."回".PHP_EOL.
+        "4位 ".$name1[3]." ".$weight1[3]."kg ".$rep1[3]."回".PHP_EOL.
+        "5位 ".$name1[4]." ".$weight1[4]."kg ".$rep1[4]."回".PHP_EOL.
+        
+        "スクワット→
+        １位 ".$name2[0]." ".$weight2[0]."kg ".$rep2[0]."回".PHP_EOL.
+        "2位 ".$name2[1]." ".$weight2[1]."kg ".$rep2[1]."回".PHP_EOL.
+        "3位 ".$name2[2]." ".$weight2[2]."kg ".$rep2[2]."回".PHP_EOL.
+        "4位 ".$name2[3]." ".$weight2[3]."kg ".$rep2[3]."回".PHP_EOL.
+        "5位 ".$name2[4]." ".$weight2[4]."kg ".$rep2[4]."回".PHP_EOL.
+        "その他ランキングは以下からチェック！
         https://blooming-brook-25294.herokuapp.com/rankings";
  
         // メッセージ送信

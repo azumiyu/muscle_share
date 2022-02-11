@@ -16,7 +16,6 @@ class Workout extends Model
     public function posts2($year_month)   
     {
         return $this->posts()->with('workout')->where('posts.created_at','like',"%$year_month%")->get();
-        
     }
     
     public function category()

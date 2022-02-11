@@ -32,6 +32,16 @@ class Post extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
     }
     
+    public function benchData()
+    {
+        return $this->with('workout')->whereMonth('created_at', '=', date('m'))->where('workout_id', 1)->get();
+    }
+    
+    public function squatData()
+    {
+        return $this->with('workout')->whereMonth('created_at', '=', date('m'))->where('workout_id', 2)->get();
+    }
+    
     use SoftDeletes;
     
      protected $fillable = [
