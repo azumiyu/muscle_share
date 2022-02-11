@@ -109,7 +109,11 @@ class LineMessengerController extends Controller
         }
         
         $message="今月のランキング！
-        その他ランキングは以下からチェック！
+        ベンチプレス→".PHP_EOL.
+        $bench.
+        "スクワット→".PHP_EOL.
+        $squat.
+        "その他ランキングは以下からチェック！
         https://blooming-brook-25294.herokuapp.com/rankings";
  
         // メッセージ送信
