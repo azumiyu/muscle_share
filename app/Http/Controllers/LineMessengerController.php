@@ -79,7 +79,7 @@ class LineMessengerController extends Controller
         }
         return $first['weight'] < $second['weight'] ? 1 : -1 ;
         })->unique('user_id')->take(5);
-        
+         
         $name1 = [];
         $weight1 = [];
         $rep1 = [];
@@ -97,26 +97,30 @@ class LineMessengerController extends Controller
             $weight2[] = $workoutrank->weight;
             $rep2[] = $workoutrank->rep;
         }
-         
-        $bench = "";
-        $squat = "";
-        for($i=0; $i< count($name1);$i++){
+        
+        $message = "今月のランキング！\nベンチプレス→\n";
+        for($i=0; $i< count($name1);$i++){ //ベンチの配列の長さ取得
             $rank = $i + 1;
-            $bench = $rank."位 ".$name1[$i]." ".$weight1[$i]."kg ".$rep1[$i]."回".PHP_EOL;
+            $bench = $rank . "位 " . $name1[$i] . " " . $weight1[$i] . "kg " . $rep1[$i] . "回\n";
+            $message .= $bench . "\n";
+        }
+
+        $message .= "スクワット→\n";
+        for($i=0; $i< count($name2);$i++){ //ベンチの配列の長さ取得
+            $rank = $i + 1;
+            $squat = $rank . "位 " . $name2[$i] . " " . $weight2[$i] . "kg " . $rep2[$i] . "回\n";
+            $message .= $squat . "\n";
         }
         
-        for($i=0; $i< count($name2);$i++){
-            $rank = $i + 1;
-            $squat = $rank."位 ".$name2[$i]." ".$weight2[$i]."kg ".$rep2[$i]."回".PHP_EOL;
+        if(empty($bench)) {
+            $bench = "今月のベンチプレスのデータはありません！";
         }
         
-        $message="今月のランキング！
-        ベンチプレス→".PHP_EOL.
-        $bench.
-        "スクワット→".PHP_EOL.
-        $squat.
-        "その他ランキングは以下からチェック！
-        https://blooming-brook-25294.herokuapp.com/rankings";
+        if(empty($squat)) {
+            $squat = "今月のスクワットのデータはありません！";
+        }
+
+        $message .= "その他ランキングは以下からチェック！" . "\n" . "https://blooming-brook-25294.herokuapp.com/rankings";
  
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);

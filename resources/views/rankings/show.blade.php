@@ -85,6 +85,5 @@
           @endphp
           @endforeach
         </table>
-        {{ $message }}
 </div>
 @endsection
