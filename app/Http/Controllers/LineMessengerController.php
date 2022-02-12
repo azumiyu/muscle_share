@@ -101,23 +101,15 @@ class LineMessengerController extends Controller
         $message = "今月のランキング！\nベンチプレス→\n";
         for($i=0; $i< count($name1);$i++){ //ベンチの配列の長さ取得
             $rank = $i + 1;
-            $bench = $rank . "位 " . $name1[$i] . " " . $weight1[$i] . "kg " . $rep1[$i] . "回\n";
+            $bench = $rank . "位 " . $name1[$i] . " " . $weight1[$i] . "kg " . $rep1[$i] . "回";
             $message .= $bench . "\n";
         }
 
         $message .= "スクワット→\n";
         for($i=0; $i< count($name2);$i++){ //ベンチの配列の長さ取得
             $rank = $i + 1;
-            $squat = $rank . "位 " . $name2[$i] . " " . $weight2[$i] . "kg " . $rep2[$i] . "回\n";
+            $squat = $rank . "位 " . $name2[$i] . " " . $weight2[$i] . "kg " . $rep2[$i] . "回";
             $message .= $squat . "\n";
-        }
-        
-        if(empty($bench)) {
-            $bench = "今月のベンチプレスのデータはありません！";
-        }
-        
-        if(empty($squat)) {
-            $squat = "今月のスクワットのデータはありません！";
         }
 
         $message .= "その他ランキングは以下からチェック！" . "\n" . "https://blooming-brook-25294.herokuapp.com/rankings";
