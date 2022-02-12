@@ -98,14 +98,14 @@ class LineMessengerController extends Controller
             $rep2[] = $workoutrank->rep;
         }
         
-        $message = "今月のランキング！\nベンチプレス→\n";
+        $message = "今月のランキング！\n\nベンチプレス↓\n";
         for($i=0; $i< count($name1);$i++){ //ベンチの配列の長さ取得
             $rank = $i + 1;
             $bench = $rank . "位 " . $name1[$i] . " " . $weight1[$i] . "kg " . $rep1[$i] . "回";
             $message .= $bench . "\n";
         }
 
-        $message .= "\nスクワット→\n";
+        $message .= "\nスクワット↓\n";
         for($i=0; $i< count($name2);$i++){ //ベンチの配列の長さ取得
             $rank = $i + 1;
             $squat = $rank . "位 " . $name2[$i] . " " . $weight2[$i] . "kg " . $rep2[$i] . "回";
