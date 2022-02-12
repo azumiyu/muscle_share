@@ -42,7 +42,9 @@ class LineBotCommand extends Command
      */
     public function handle()
     {
-        $linePost = file_get_contents('https://blooming-brook-25294.herokuapp.com/line/message');
-        echo $linePost;
+        if(date('Y-m-t') == date('Y-m-d')){
+            $linePost = file_get_contents('https://blooming-brook-25294.herokuapp.com/line/message');
+            echo $linePost;
+        }
     }
 }

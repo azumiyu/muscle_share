@@ -29,7 +29,17 @@ class LineMessengerController extends Controller
             $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
  
             // 送信するメッセージの設定
-            $reply_message='メッセージありがとうございます';
+            $msgAry = array(
+                "パワー！\n by中山きんにくん（お笑い芸人）",
+                "小さいことを重ねることが、とんでもないところに行くただひとつの道。
+                \n by イチロー（プロ野球選手）",
+                "いつやるの？いまでしょ！\n by 林修（塾講師）",
+                "人にできて、きみだけにできないことなんてあるもんか。\n by ドラえもん（アニメ『ドラえもん』）",
+                "あきらめたらそこで試合終了だよ…？
+                \nby 安西光義先生（スラムダンク）"
+                );
+            $key = array_rand($msgAry, 1);
+            $reply_message=$msgAry[$key];
  
             // ユーザーにメッセージを返す
             $reply=$bot->replyText($reply_token, $reply_message);
