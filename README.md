@@ -37,16 +37,8 @@ heroku (https://blooming-brook-25294.herokuapp.com)
 
 ## デモページ（工夫した点）
 <img src="https://user-images.githubusercontent.com/66857971/153733305-846fd6d1-9bce-49cc-8513-47021a51879a.jpg" width="30%">
-LINE BOTを作り
+LINE BOTを作り、1ヶ月に1度自動でランキングが友達追加している人に送られるように連携しました。
 <img width="500" alt="スクリーンショット 2022-02-13 9 33 46" src="https://user-images.githubusercontent.com/66857971/153733388-45ca1903-9955-46aa-91b9-a7f0878a5606.png">
+自分の体重管理表です。体重を入力するだけで、面倒な作業をなくすために最終の体重をformに保存するなど工夫しました。
 <img width="500" alt="スクリーンショット 2022-02-13 9 34 26" src="https://user-images.githubusercontent.com/66857971/153733393-e3eea6db-68a3-4c2d-a3e3-8f6459f4b807.png">
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+筋トレ掲示板の画面のデモです。
