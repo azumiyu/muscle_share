@@ -40,14 +40,14 @@ heroku (https://blooming-brook-25294.herokuapp.com)
 ### LINE API連携
 LINE BOTを作り、1ヶ月に1度自動でランキングが友達追加している人に送られるように連携しました。
 
-<img src="https://user-images.githubusercontent.com/66857971/153733305-846fd6d1-9bce-49cc-8513-47021a51879a.jpg" width="30%">
+<img src="https://user-images.githubusercontent.com/66857971/153733305-846fd6d1-9bce-49cc-8513-47021a51879a.jpg" width="50%">
 
 ### 筋トレ掲示板
 筋トレ掲示板の画面のデモです。スマートフォン画面では投稿ボタンの位置を変更するなど、ユーザが使用しやすい形に変えました。
 
-<img width="500" alt="スクリーンショット 2022-02-13 9 33 46" src="https://user-images.githubusercontent.com/66857971/153733388-45ca1903-9955-46aa-91b9-a7f0878a5606.png">
+<img width="80%" alt="スクリーンショット 2022-02-13 9 33 46" src="https://user-images.githubusercontent.com/66857971/153733388-45ca1903-9955-46aa-91b9-a7f0878a5606.png">
 
 ### 体重管理グラフ
 自分の体重管理表です。体重を入力するだけで、面倒な作業をなくすために最終の体重をformに保存するなど工夫しました。
 
-<img width="500" alt="スクリーンショット 2022-02-13 9 34 26" src="https://user-images.githubusercontent.com/66857971/153733393-e3eea6db-68a3-4c2d-a3e3-8f6459f4b807.png">
+<img width="80%" alt="スクリーンショット 2022-02-13 9 34 26" src="https://user-images.githubusercontent.com/66857971/153733393-e3eea6db-68a3-4c2d-a3e3-8f6459f4b807.png">
