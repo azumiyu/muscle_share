@@ -18,8 +18,8 @@ AWS cloud9(EC2)
 
 ### フロントエンド
 
-bootstrap v4.6.1<br>
-jquery v3.6.0<br>
+Bootstrap v4.6.1<br>
+jQuery v3.6.0<br>
 Chart.js v3.5.1
 
 ### バックエンド
